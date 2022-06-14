@@ -1,0 +1,13 @@
+# This is a description file of a polymake extension rooted in this directory.
+# Please refer to the documentation under
+#   https://polymake.org/doku.php/user_guide/extend/extensions
+# for detailed explanations of its contents.
+
+# URI is a unique identifier assigned to this extension.
+# This is the only mandatory entry in this file.
+URI https://polymake.org/extensions/julia
+
+CREDIT julia
+   Work-in-progress interface for some julia field types
+   https://julialang.org
+
