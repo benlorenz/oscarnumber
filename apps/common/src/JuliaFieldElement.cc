@@ -311,7 +311,7 @@ class julia_field_impl : public julia_field_wrap {
          return new julia_field_impl(dispatch.abs(julia_elem), dispatch, std::true_type());
       }
 
-      constexpr bool is_rational() const {
+      bool is_rational() const {
          return false;
       }
       long index() const {
@@ -414,10 +414,10 @@ public:
       return new julia_field_rational_impl(abs((Rational)*this));
    }
 
-   constexpr bool is_rational() const {
+   bool is_rational() const {
       return true;
    }
-   constexpr long index() const {
+   long index() const {
       return 0;
    }
 

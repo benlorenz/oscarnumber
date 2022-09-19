@@ -3,11 +3,7 @@
 #   https://polymake.org/doku.php/user_guide/extend/extensions
 # for detailed explanations of its contents.
 
-# URI is a unique identifier assigned to this extension.
-# This is the only mandatory entry in this file.
-URI https://polymake.org/extensions/julia
-
 CREDIT julia
-   Work-in-progress interface for some julia field types
+   Work-in-progress interface for some oscar field types
    https://julialang.org
 
