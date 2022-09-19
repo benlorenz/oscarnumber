@@ -38,7 +38,24 @@ class JuliaFieldElement;
 namespace pm {
 
 template <>
-struct spec_object_traits< polymake::common::JuliaFieldElement>;
+struct spec_object_traits< polymake::common::JuliaFieldElement>
+   : spec_object_traits<is_scalar> {
+   typedef polymake::common::JuliaFieldElement persistent_type;
+   typedef void generic_type;
+   typedef is_scalar generic_tag;
+
+   static
+   bool is_zero(const persistent_type& p);
+
+   static
+   bool is_one(const persistent_type& p);
+
+   static
+   const persistent_type& zero();
+
+   static
+   const persistent_type& one();
+};
 
 }
 
@@ -73,7 +90,7 @@ class JuliaFieldElement {
       JuliaFieldElement& operator= (const Rational& b);
       JuliaFieldElement& operator= (const JuliaFieldElement& b);
 
-      // 
+      //
       JuliaFieldElement& operator+= (const Rational& b);
       JuliaFieldElement& operator-= (const Rational& b);
       JuliaFieldElement& operator*= (const Rational& b);
@@ -110,7 +127,7 @@ class JuliaFieldElement {
       explicit operator Rational() const;
 
 
-      // TODO check 
+      // TODO check
       inline friend void relocate(JuliaFieldElement* from, JuliaFieldElement* to) {
          pm::relocate(from,to);
       }
@@ -129,13 +146,13 @@ class JuliaFieldElement {
       //void set_inf(Int sgn);
       //void set_inf(const NumberField& nf, Int sgn);
 
-      bool is_finite() const { 
+      bool is_finite() const {
          return this->is_inf() == 0;
       }
 
       // Assignment
       template <typename T, typename=std::enable_if_t<pm::can_initialize<pure_type_t<T>, Rational>::value>>
-      JuliaFieldElement& operator= (const T& b) 
+      JuliaFieldElement& operator= (const T& b)
       {
          return *this = Rational(b);
       }
@@ -359,40 +376,6 @@ inline bool abs_equal(const polymake::common::JuliaFieldElement& jf1,const polym
 
 
 namespace pm {
-
-template <>
-struct spec_object_traits< polymake::common::JuliaFieldElement>
-   : spec_object_traits<is_scalar> {
-   typedef polymake::common::JuliaFieldElement persistent_type;
-   typedef void generic_type;
-   typedef is_scalar generic_tag;
-
-   static
-   bool is_zero(const persistent_type& p)
-   {
-      return p.is_zero();
-   }
-
-   static
-   bool is_one(const persistent_type& p)
-   {
-      return p.is_one();
-   }
-
-   static
-   const persistent_type& zero()
-   {
-      static const persistent_type x=persistent_type(0);
-      return x;
-   }
-
-   static
-   const persistent_type& one()
-   {
-      static const persistent_type x(1);
-      return x;
-   }
-};
 
 // convince polymake to properly deserialize this as a composite object even though it is
 // used as a scalar

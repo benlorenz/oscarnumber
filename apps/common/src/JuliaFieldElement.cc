@@ -145,7 +145,7 @@ class julia_field_impl : public julia_field_wrap {
 
       // this is a move construction taking ownership of the jl_value_t
       julia_field_impl(jl_value_t* v, const julia_field_dispatch& d, std::true_type) :
-         dispatch(d), julia_elem(v) { 
+         dispatch(d), julia_elem(v) {
          //cerr << "moved in constructor" << endl;
          JL_GC_PUSH1(&julia_elem);
          dispatch.gc_protect(julia_elem);
@@ -155,7 +155,7 @@ class julia_field_impl : public julia_field_wrap {
 
       // this makes a copy
       julia_field_impl(jl_value_t* v, const julia_field_dispatch& d) :
-         dispatch(d) { 
+         dispatch(d) {
          //cerr << "copy in constructor" << endl;
          julia_elem = dispatch.copy(v);
          //cerr << "copied in constructor" << endl;
@@ -467,12 +467,12 @@ JuliaFieldElement::JuliaFieldElement(const Rational& r) :
    impl(juliainterface::julia_field_wrap::create(r), &juliainterface::julia_field_wrap::destroy) {}
 
 JuliaFieldElement::JuliaFieldElement(const JuliaFieldElement& jfe) :
-   impl(jfe.impl->copy(), &juliainterface::julia_field_wrap::destroy) { 
+   impl(jfe.impl->copy(), &juliainterface::julia_field_wrap::destroy) {
    //cerr << "copied" << endl;
 }
 
 JuliaFieldElement::JuliaFieldElement(JuliaFieldElement&& jfe) :
-   impl(std::move(jfe.impl)) { 
+   impl(std::move(jfe.impl)) {
    //cerr << "moved" << endl;
 }
 
@@ -657,3 +657,29 @@ void JuliaFieldElement::register_julia_field(void* disp, long index) {
 
 } }
 
+namespace pm {
+
+bool
+spec_object_traits< polymake::common::JuliaFieldElement>::is_zero(const persistent_type& p)
+{
+   return p.is_zero();
+}
+bool
+spec_object_traits< polymake::common::JuliaFieldElement>::is_one(const persistent_type& p)
+{
+   return p.is_one();
+}
+const polymake::common::JuliaFieldElement&
+spec_object_traits< polymake::common::JuliaFieldElement>::zero()
+{
+   static const persistent_type x(0);
+   return x;
+}
+const polymake::common::JuliaFieldElement&
+spec_object_traits< polymake::common::JuliaFieldElement>::one()
+{
+   static const persistent_type x(1);
+   return x;
+}
+
+}
