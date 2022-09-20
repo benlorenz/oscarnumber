@@ -39,7 +39,7 @@ sub proceed {
    }
    if ($julia_inc) {
       if (-f "$julia_inc/julia/julia.h") {
-         $CXXFLAGS = "-I$julia_inc";
+         $CXXFLAGS = "-I$julia_inc -I$julia_inc/julia";
       } else {
          die "Invalid installation location of julia: header file $julia_inc/julia/julia.h does not exist\n";
       }
