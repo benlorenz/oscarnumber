@@ -1,5 +1,0 @@
-{"app": "common",
- "inst": [
-  {"class": "JuliaFieldElement", "guard_name": "APP_WRAPPERS_common_JuliaFieldElement", "include": ["polymake/common/JuliaFieldElement.h"], "pkg": "Polymake::common::JuliaFieldElement", "wrapper_file": "/home/lorenz/software/polymake/extensions/julia/include/app-wrappers/polymake/common/JuliaFieldElement.h"},
- null ],
-"version": 3}

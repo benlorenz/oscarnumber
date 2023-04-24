@@ -17,15 +17,15 @@
 
 #pragma once
 
-#define POLYMAKE_APP_WRAPPERS_common_JuliaFieldElement_H
+#define POLYMAKE_APP_WRAPPERS_common_OscarNumber_H
 
-#include_next "polymake/common/JuliaFieldElement.h"
+#include_next "polymake/common/OscarNumber.h"
 #include "polymake/client.h"
 
 namespace polymake { namespace perl_bindings {
 ///==== Automatically generated contents follow.    Please do not delete this line. ====
    template <typename T>
-   RecognizeType4perl("Polymake::common::JuliaFieldElement", (), polymake::common::JuliaFieldElement)
+   RecognizeType4perl("Polymake::common::OscarNumber", (), polymake::common::OscarNumber)
 
 ///==== Automatically generated contents end here.  Please do not delete this line. ====
 } }

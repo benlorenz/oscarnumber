@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"class": "OscarNumber", "guard_name": "APP_WRAPPERS_common_OscarNumber", "include": ["polymake/common/OscarNumber.h"], "pkg": "Polymake::common::OscarNumber", "wrapper_file": "/home/lorenz/software/polymake/extensions/julia/include/app-wrappers/polymake/common/OscarNumber.h"},
+ null ],
+"version": 3}

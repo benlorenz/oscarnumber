@@ -15,12 +15,12 @@
 #-------------------------------------------------------------------------------
 
 # @category Basic Types
-# This wraps an arbitrary julia type using a `jl_value_t` pointer, and 
+# This wraps an arbitrary oscar type using a `jl_value_t` pointer, and 
 # uses a polymake [[Rational]] as a fallback implementation to allow
 # constructions like `unit_matrix` without access to a concrete element or
 # the julia parent object.
 #
-declare property_type JuliaFieldElement : upgrades(Rational) : c++ (include => "polymake/common/JuliaFieldElement.h", name=>"polymake::common::JuliaFieldElement") {
+declare property_type OscarNumber : upgrades(Rational) : c++ (include => "polymake/common/OscarNumber.h", name=>"polymake::common::OscarNumber") {
 
    # Construct from rational
    # @param Rational r
@@ -39,6 +39,6 @@ declare property_type JuliaFieldElement : upgrades(Rational) : c++ (include => "
    use overload '0+' => \&inhibited_num;
 }
 
-function is_ordered_field_with_unlimited_precision(JuliaFieldElement) { 1 }
+function is_ordered_field_with_unlimited_precision(OscarNumber) { 1 }
 
 
