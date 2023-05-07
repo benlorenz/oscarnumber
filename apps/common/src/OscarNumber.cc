@@ -84,7 +84,7 @@ class oscar_number_wrap {
    virtual oscar_number_wrap* upgrade_to(const oscar_number_dispatch& d) = 0;
    virtual jl_value_t* for_julia() const = 0;
    virtual const Rational& as_rational() const = 0;
-   virtual bool is_rational() const = 0;
+   virtual bool uses_rational() const = 0;
    virtual long index() const = 0;
 
    virtual oscar_number_wrap* negate() = 0;
@@ -326,8 +326,16 @@ class oscar_number_impl : public oscar_number_wrap {
 
       oscar_number_wrap* pow(Int k) const {
          //cerr << "pre-pow" << endl;
-         // TODO inf
-         return new oscar_number_impl(dispatch.pow(julia_elem, k), dispatch, std::true_type());
+         if (__builtin_expect(this->is_inf() == 0, 1))
+            return new oscar_number_impl(dispatch.pow(julia_elem, k), dispatch, std::true_type());
+         else if (k > 0)
+            return oscar_number_wrap::create(
+                     Rational::infinity(k%2 == 0 ? 1 : this->is_inf())
+                   );
+         else if (k == 0)
+            throw pm::GMP::NaN();
+         else
+            return oscar_number_wrap::create(Rational(0));
       }
 
       Int cmp(const oscar_number_wrap* b) const {
@@ -358,11 +366,12 @@ class oscar_number_impl : public oscar_number_wrap {
       }
       oscar_number_wrap* abs_value() const {
          //cerr << "pre-abs" << endl;
-         // TODO inf?
-         return new oscar_number_impl(dispatch.abs(julia_elem), dispatch, std::true_type());
+         if (__builtin_expect(this->is_inf() == 0, 1))
+            return new oscar_number_impl(dispatch.abs(julia_elem), dispatch, std::true_type());
+         return oscar_number_wrap::create(Rational::infinity(1));
       }
 
-      bool is_rational() const {
+      bool uses_rational() const {
          return false;
       }
       long index() const {
@@ -469,7 +478,7 @@ public:
       return new oscar_number_rational_impl(abs((Rational)*this));
    }
 
-   bool is_rational() const {
+   bool uses_rational() const {
       return true;
    }
    long index() const {
@@ -500,9 +509,9 @@ void oscar_number_wrap::destroy(oscar_number_wrap* j) {
 using onptr = std::unique_ptr<oscar_number_wrap, void (*)(oscar_number_wrap*)>;
 
 void maybe_upgrade(onptr& a, onptr& b) {
-   if (b->is_rational() && !a->is_rational())
+   if (b->uses_rational() && !a->uses_rational())
       b = std::move(onptr(a->upgrade_other(b.get()), &oscar_number_wrap::destroy));
-   else if (a->is_rational() && !b->is_rational())
+   else if (a->uses_rational() && !b->uses_rational())
       a = std::move(onptr(b->upgrade_other(a.get()), &oscar_number_wrap::destroy));
    else if (a->index() != b->index() && a->index() * b->index() != 0)
       throw std::runtime_error("oscar_number_wrap: different julia fields!");
@@ -561,7 +570,7 @@ OscarNumber& OscarNumber::operator/= (const Rational& b) {
 }
 //OscarNumber& OscarNumber::operator+= (const Rational& r){
 //   auto jfr = juliainterface::oscar_number_wrap::create(r);
-//   if (impl->is_rational()) {
+//   if (impl->uses_rational()) {
 //      impl->add(jfr);
 //   } else {
 //      auto on = impl->upgrade_other(jfr);
