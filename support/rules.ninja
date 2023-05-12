@@ -1,0 +1,5 @@
+# link a shared module as dynamiclib
+rule sharedlib
+  command = ${CCWRAPPER} ${CXX} ${LDcallableFLAGS} ${ARCHFLAGS} -o $out $in ${LDmodeFLAGS} ${LDextraFLAGS} ${LIBSextra} ${LDFLAGS} ${LIBS}
+  description = LINK $out
+

@@ -18,6 +18,5 @@
 # of $InstallTop.  For a standalone extension, the corresponding destination directories
 # are $ExtArch and $ExtTop.
 
-# Examples can be found in bundled extensions java and jreality.
-
-copy_file("$buildtop/lib/libpolymake_oscarnumber.$ConfigFlags{'So'}", "$InstallArch/lib/", mode=> 0555);
+my @libs = glob("$buildtop/lib/libpolymake_oscarnumber.*");
+copy_file(@libs, "$InstallArch/lib/", mode=> 0555);

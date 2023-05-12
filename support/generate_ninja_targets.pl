@@ -22,7 +22,9 @@
 #
 use vars '$extroot';
 
-my $libname = "\${buildtop}/lib/libpolymake_oscarnumber.\${So}";
+my $dlext = ($ConfigFlags{So} // $ENV{dlext}) // $Config::Config{dlext};
+
+my $libname = "\${buildtop}/lib/libpolymake_oscarnumber.$dlext";
 my $build_cmd="";
 my @obj_files;
 my $src_dir="$ConfigFlags{extroot}/external/jlpolymake_oscarnumber";
@@ -37,8 +39,7 @@ build $obj_file: cxxcompile $src_file
    push @obj_files, $obj_file;
 }
 $build_cmd .= <<"---";
-build $libname: sharedmod @obj_files
-  LDextraFLAGS=-Wl,--allow-undefined
+build $libname: sharedlib @obj_files
   LIBSextra=-lcxxwrap_julia -ljulia
 ---
 
