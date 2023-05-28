@@ -2,9 +2,9 @@
 # Please refer to the documentation under
 #   https://polymake.org/doku.php/user_guide/extend/extensions
 # for detailed explanations of its contents.
-URI whatever
+URI https://github.com/benlorenz/oscarnumber
 
-CREDIT julia
+CREDIT oscarnumber
    Work-in-progress interface for some oscar field types
-   https://julialang.org
+   https://github.com/oscar-system/Oscar.jl
 
