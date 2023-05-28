@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "canonical_initial.cc",
+ "inst": [
+  {"args": ["perl::Canned<Matrix<polymake::common::OscarNumber>&>"], "func": "canonicalize_polytope_generators", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "canonicalize_polytope_generators.X1"},
+ null ],
+"version": 3}

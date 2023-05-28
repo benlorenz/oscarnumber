@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"class": "Array<polymake::common::OscarNumber>", "include": ["polymake/Array.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::Array__OscarNumber"},
+ null ],
+"version": 3}

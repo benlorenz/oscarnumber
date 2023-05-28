@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"class": "SparseMatrix<polymake::common::OscarNumber, NonSymmetric>", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::SparseMatrix_A_OscarNumber_I_NonSymmetric_Z"},
+ null ],
+"version": 3}

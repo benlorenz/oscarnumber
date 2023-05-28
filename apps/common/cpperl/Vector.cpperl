@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"class": "Vector<polymake::common::OscarNumber>", "include": ["polymake/Vector.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::Vector__OscarNumber"},
+ null ],
+"version": 3}

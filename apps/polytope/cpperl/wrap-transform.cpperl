@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "transform.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "void"], "func": "scale", "include": ["polymake/common/OscarNumber.h"], "sig": "scale:T1.B.C0.x", "tp": 1},
+ null ],
+"version": 3}

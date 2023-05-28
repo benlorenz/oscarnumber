@@ -1,0 +1,6 @@
+{"app": "common",
+ "inst": [
+  {"args": ["perl::Canned<const SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "func": "rows", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "kind": "meth", "sig": "rows:M"},
+  {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "rows", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "kind": "meth", "sig": "rows:M"},
+ null ],
+"version": 3}

@@ -1,0 +1,6 @@
+{"app": "polytope", "embed": "beneath_beyond.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "void", "void"], "func": "beneath_beyond_find_facets", "include": ["polymake/common/OscarNumber.h"], "sig": "beneath_beyond_find_facets:T1.B.x.o", "tp": 1},
+  {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>", "void"], "func": "placing_triangulation", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "placing_triangulation.X.o"},
+ null ],
+"version": 3}

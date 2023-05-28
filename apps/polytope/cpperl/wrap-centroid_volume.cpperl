@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "centroid_volume.cc",
+ "inst": [
+  {"args": ["void", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>", "perl::Canned<const Array<Set<Int>>&>"], "func": "centroid_volume", "include": ["polymake/Array.h", "polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Set.h", "polymake/common/OscarNumber.h"], "sig": "centroid_volume.B.X.X"},
+ null ],
+"version": 3}

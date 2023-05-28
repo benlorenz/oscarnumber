@@ -1,0 +1,8 @@
+{"app": "common",
+ "inst": [
+  {"class": "Matrix<polymake::common::OscarNumber>", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::Matrix_A_OscarNumber_I_NonSymmetric_Z"},
+  {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+  {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "op": "convert", "ret": "empty", "sig": "convert:O"},
+  {"args": ["Matrix<polymake::common::OscarNumber>", "Int(Int)", "Int(Int)"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.Int.Int"},
+ null ],
+"version": 3}

@@ -34,13 +34,13 @@ foreach my $src_file (glob "$src_dir/src/*.cpp") {
    my $obj_file="\${buildtop}/jlcxx/$obj_name.o";
    $build_cmd .= <<"---";
 build $obj_file: cxxcompile $src_file
-  CXXextraFLAGS=-I\${extroot}/include/app-wrappers -I\${extroot}/include/apps -I$src_dir/include -std=c++17
+  CXXextraFLAGS=\${core.includes} -I\${extroot}/include/app-wrappers -I\${extroot}/include/apps -I$src_dir/include -std=c++17
 ---
    push @obj_files, $obj_file;
 }
 $build_cmd .= <<"---";
 build $libname: sharedlib @obj_files
-  LIBSextra=-lcxxwrap_julia -ljulia
+  LIBSextra=-lpolymake_julia -lcxxwrap_julia -ljulia -lpolymake
 ---
 
 print "$build_cmd\n";

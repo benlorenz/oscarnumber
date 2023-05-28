@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["perl::Canned<const pm::IndexedSlice<pm::masquerade<pm::ConcatRows, pm::Matrix_base<common::OscarNumber> const&>, pm::Series<long, true> const, mlist<> >&>"], "func": "is_zero", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/internal/comparators.h"], "sig": "is_zero.X"},
+ null ],
+"version": 3}

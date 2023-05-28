@@ -1,0 +1,7 @@
+{"app": "polytope", "embed": "canonical_coord.cc",
+ "inst": [
+  {"args": ["perl::Canned<Matrix<polymake::common::OscarNumber>&>"], "func": "orthogonalize_affine_subspace", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "orthogonalize_affine_subspace.X1"},
+  {"args": ["perl::Canned<Matrix<polymake::common::OscarNumber>&>"], "func": "orthogonalize_subspace", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "orthogonalize_subspace.X1"},
+  {"args": ["perl::Canned<Matrix<polymake::common::OscarNumber>&>"], "func": "canonicalize_rays", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "canonicalize_rays.X1"},
+ null ],
+"version": 3}
