@@ -22,18 +22,20 @@
 
 sub allowed_options {
    my ($allowed_options, $allowed_with)=@_;
-   @$allowed_with{ qw( julia cxxwrap ) }=();
+   @$allowed_with{ qw( julia cxxwrap jlpolymake ) }=();
 }
 
 sub usage {
-   print STDERR "  --with-julia=PATH    installation path of julia, if non-standard\n";
-   print STDERR "  --with-cxxwrap=PATH  installation path of cxxwrap, if non-standard\n";
+   print STDERR "  --with-julia=PATH       installation path of julia, if non-standard\n";
+   print STDERR "  --with-cxxwrap=PATH     installation path of cxxwrap, if non-standard\n";
+   print STDERR "  --with-jlpolymake=PATH  installation path of libpolymake-julia, if non-standard\n";
 }
 
 sub proceed {
    my ($options)=@_;
    my ($julia_path, $julia_version, $julia_inc, $julia_lib, $julia_config);
    my ($cxxwrap_path, $cxxwrap_version, $cxxwrap_inc, $cxxwrap_lib, $cxxwrap_config);
+   $CXXFLAGS = "-fno-openmp";
 
    if (defined ($cxxwrap_path=$options->{cxxwrap})) {
       $cxxwrap_inc="$cxxwrap_path/include";
