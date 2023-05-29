@@ -126,6 +126,9 @@ class OscarNumber {
       explicit operator double() const;
       explicit operator Rational() const;
 
+      bool uses_rational() const;
+
+      void* unsafe_get() const;
 
       // TODO check
       inline friend void relocate(OscarNumber* from, OscarNumber* to) {

@@ -660,10 +660,17 @@ OscarNumber::operator double() const {
    return double(impl->as_rational());
 }
 
+bool OscarNumber::uses_rational() const {
+   return impl->uses_rational();
+}
+
+void* OscarNumber::unsafe_get() const {
+   return reinterpret_cast<void*>(impl->for_julia());
+}
+
 std::string OscarNumber::to_string() const {
    return impl->to_string();
 }
-
 
 void OscarNumber::register_oscar_number(void* disp, long index) {
    using namespace juliainterface;

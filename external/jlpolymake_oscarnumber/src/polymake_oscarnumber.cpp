@@ -115,6 +115,7 @@ void add_oscarnumber(jlcxx::Module& jlmodule)
     jlmodule.method("iszero", [](const WrappedT& a) { return a.is_zero(); });
     jlmodule.method("isone", [](const WrappedT& a) { return a.is_one(); });
     jlmodule.method("abs", [](const WrappedT& a) { return abs(a); });
+    jlmodule.method("isinf", [](const WrappedT& a) { return a.is_inf(); });
 
     jlmodule.method("-", [](const WrappedT& a) { return -a; });
 
@@ -130,6 +131,18 @@ void add_oscarnumber(jlcxx::Module& jlmodule)
     jlmodule.method("show_small_obj", [](const WrappedT& S) {
                 return show_small_object<WrappedT>(S);
             });
+
+    jlmodule.method("_uses_rational", [](const WrappedT& S) {
+                return S.uses_rational();
+          });
+
+    jlmodule.method("_get_rational", [](const WrappedT& S) {
+                return static_cast<Rational>(S);
+          });
+
+    jlmodule.method("_unsafe_get_ptr", [](const WrappedT& S) {
+                return S.unsafe_get();
+          });
 
     jlmodule.method("to_oscarnumber", [](pm::perl::PropertyValue v) {
         return to_SmallObject<WrappedT>(v);
