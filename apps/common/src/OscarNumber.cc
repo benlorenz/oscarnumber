@@ -113,7 +113,6 @@ class oscar_number_impl : public oscar_number_wrap {
    public:
       // no default construction, this should only contain proper field elements
       // zero / one / ... is handled via embedded rationals
-      // TODO: inf via rationals?
       //oscar_number_impl() { };
       oscar_number_impl() = delete;
 
@@ -340,8 +339,11 @@ class oscar_number_impl : public oscar_number_wrap {
 
       Int cmp(const oscar_number_wrap* b) const {
          //cerr << "pre-cmp" << endl;
-         // TODO inf
-         return dispatch.cmp(julia_elem, b->for_julia());
+         if (__builtin_expect(this->is_inf() == 0, 1))
+            if (__builtin_expect(b->is_inf() == 0, 1))
+               return dispatch.cmp(julia_elem, b->for_julia());
+         Int res = this->is_inf() - b->is_inf();
+         return res < 0 ? -1 : (res > 0 ? 1 : 0);
       }
 
       bool is_zero() const {
@@ -355,7 +357,6 @@ class oscar_number_impl : public oscar_number_wrap {
          return false;
       }
       Int is_inf() const {
-         // no inf in oscar types for now
          return infinity;
       }
       Int sign() const {
@@ -396,7 +397,6 @@ class oscar_number_impl : public oscar_number_wrap {
    private:
       const oscar_number_dispatch& dispatch;
       jl_value_t* julia_elem = nullptr;
-      // TODO: infinity not fully implemented yet
       Int infinity = 0;
 
    friend class oscar_number_rational_impl;
@@ -426,7 +426,6 @@ public:
    }
 
    jl_value_t* for_julia() const {
-      // TODO check upcast?
       // we should probably never end up here
       throw std::runtime_error("oscar_number_rational: not implemented");
       //return (jl_value_t*) nullptr;
