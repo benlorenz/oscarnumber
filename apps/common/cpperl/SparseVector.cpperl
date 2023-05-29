@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"class": "SparseVector<polymake::common::OscarNumber>", "include": ["polymake/SparseVector.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::SparseVector__OscarNumber"},
+ null ],
+"version": 3}
