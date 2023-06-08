@@ -129,10 +129,14 @@ class oscar_number_impl : public oscar_number_wrap {
       oscar_number_impl(const Rational& x, const oscar_number_dispatch& d) :
          dispatch(d) {
          //cerr << "pre-init from mpz" << endl;
-         jl_value_t* empty;
+         jl_value_t* empty = nullptr;
          JL_GC_PUSH2(&julia_elem, &empty);
          if (__builtin_expect(isfinite(x),1)) {
-            julia_elem = dispatch.init_from_mpz(dispatch.index, &empty, numerator(x).get_rep(),denominator(x).get_rep());
+            if (x.is_integral() && numerator(x).fits_into_Int()) {
+               julia_elem = dispatch.init(dispatch.index, &empty, static_cast<Int>(x));
+            } else {
+               julia_elem = dispatch.init_from_mpz(dispatch.index, &empty, numerator(x).get_rep(),denominator(x).get_rep());
+            }
          } else {
             julia_elem = dispatch.init(dispatch.index, &empty, 1);
             infinity = isinf(x);
@@ -422,7 +426,7 @@ public:
    }
 
    oscar_number_wrap* upgrade_to(const oscar_number_dispatch& d) {
-      return new oscar_number_impl((Rational) *this, d);
+      return new oscar_number_impl(static_cast<const Rational &>(*this), d);
    }
 
    jl_value_t* for_julia() const {
