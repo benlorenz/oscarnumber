@@ -1,5 +1,6 @@
 {"app": "polytope", "embed": "to_lp_client.cc",
  "inst": [
   {"args": ["polymake::common::OscarNumber"], "func": "to_interface::create_LP_solver", "include": ["polymake/common/OscarNumber.h"], "sig": "create_LP_solver#to.simplex:T1", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "void", "void"], "func": "to_lp_client", "include": ["polymake/common/OscarNumber.h"], "sig": "to_lp_client:T1.B.B.x", "tp": 1},
  null ],
 "version": 3}

@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "rel_int_point.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "rel_int_point", "include": ["polymake/common/OscarNumber.h"], "sig": "rel_int_point:T1.B", "tp": 1},
+ null ],
+"version": 3}

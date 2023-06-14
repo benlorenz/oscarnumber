@@ -1,5 +1,6 @@
 {"app": "polytope", "embed": "contains.cc",
  "inst": [
   {"args": ["polymake::common::OscarNumber", "void", "void"], "func": "contains_V_V_via_LP", "include": ["polymake/common/OscarNumber.h"], "sig": "contains_V_V_via_LP:T1.B.B", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "void"], "func": "cone_contains", "include": ["polymake/common/OscarNumber.h"], "sig": "cone_contains:T1.B.B", "tp": 1},
  null ],
 "version": 3}

@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["perl::Canned<const Set<Vector<Rational>>&>", "perl::Canned<const Set<Vector<Rational>>&>"], "func": "incl", "include": ["polymake/Rational.h", "polymake/Set.h", "polymake/Vector.h"], "sig": "incl.X.X"},
+ null ],
+"version": 3}

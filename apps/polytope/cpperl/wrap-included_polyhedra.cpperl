@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "included_polyhedra.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "void", "void"], "func": "included_polyhedra", "include": ["polymake/common/OscarNumber.h"], "sig": "included_polyhedra:T1.B.B.o", "tp": 1},
+ null ],
+"version": 3}

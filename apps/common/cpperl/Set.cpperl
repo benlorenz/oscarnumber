@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["Set<Vector<Rational>>", "perl::Canned<const pm::Rows<pm::Matrix<pm::Rational> >&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h", "polymake/Set.h", "polymake/Vector.h"], "op": "new", "sig": "new.X"},
+ null ],
+"version": 3}

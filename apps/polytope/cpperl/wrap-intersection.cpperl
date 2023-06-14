@@ -1,0 +1,6 @@
+{"app": "polytope", "embed": "intersection.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "intersection", "include": ["polymake/common/OscarNumber.h"], "sig": "intersection:T1.B", "tp": 1},
+  {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const pm::ListMatrix<pm::Vector<common::OscarNumber> >&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+ null ],
+"version": 3}

@@ -1,0 +1,6 @@
+{"app": "common",
+ "inst": [
+  {"args": ["perl::AnchorArg<perl::Canned<Wary<Matrix<polymake::common::OscarNumber>>&>>", "perl::Enum<pm::all_selector>", "perl::AnchorArg<perl::Canned<pm::OpenRange>>"], "func": "minor", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Set.h", "polymake/common/OscarNumber.h"], "kind": "meth", "ret": "lvalue", "sig": "minor:F:M14.X11.X11"},
+  {"args": ["perl::AnchorArg<perl::Canned<const Wary<Matrix<polymake::common::OscarNumber>>&>>", "perl::Enum<pm::all_selector>", "perl::AnchorArg<perl::Canned<pm::OpenRange>>"], "func": "minor", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Set.h", "polymake/common/OscarNumber.h"], "kind": "meth", "ret": "lvalue", "sig": "minor:F:M14.X11.X11"},
+ null ],
+"version": 3}

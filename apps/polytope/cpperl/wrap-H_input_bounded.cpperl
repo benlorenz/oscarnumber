@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "H_input_bounded.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "H_input_bounded", "include": ["polymake/common/OscarNumber.h"], "sig": "H_input_bounded:T1.B", "tp": 1},
+ null ],
+"version": 3}

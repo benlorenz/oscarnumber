@@ -1,0 +1,6 @@
+{"app": "polytope", "embed": "minkowski_sum.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "polymake::common::OscarNumber(Int)", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>", "polymake::common::OscarNumber(Int)", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "minkowski_sum_client", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "minkowski_sum_client:T1.C0.X.C0.X", "tp": 1},
+
+ null ],
+"version": 3}

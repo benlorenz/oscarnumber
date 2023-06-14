@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "zero_vector", "include": ["polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "zero_vector:T1.x", "tp": 1},
+ null ],
+"version": 3}
