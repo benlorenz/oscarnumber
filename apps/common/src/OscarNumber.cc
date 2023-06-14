@@ -494,6 +494,7 @@ public:
       return str.str();
    }
 
+private:
    //static oscar_number_wrap* from_string(const std::string& s);
 };
 
@@ -511,13 +512,16 @@ void oscar_number_wrap::destroy(oscar_number_wrap* j) {
 
 using onptr = std::unique_ptr<oscar_number_wrap, void (*)(oscar_number_wrap*)>;
 
-void maybe_upgrade(onptr& a, onptr& b) {
-   if (b->uses_rational() && !a->uses_rational())
-      b = std::move(onptr(a->upgrade_other(b.get()), &oscar_number_wrap::destroy));
-   else if (a->uses_rational() && !b->uses_rational())
+onptr maybe_upgrade(onptr& a, const onptr& b) {
+   if (b->uses_rational() && !a->uses_rational()) {
+      onptr bc(b->copy(), &oscar_number_wrap::destroy);
+      bc = std::move(onptr(a->upgrade_other(bc.get()), &oscar_number_wrap::destroy));
+      return std::move(bc);
+   } else if (a->uses_rational() && !b->uses_rational())
       a = std::move(onptr(b->upgrade_other(a.get()), &oscar_number_wrap::destroy));
    else if (a->index() != b->index() && a->index() * b->index() != 0)
       throw std::runtime_error("oscar_number_wrap: different julia fields!");
+   return std::move(onptr(nullptr, &oscar_number_wrap::destroy));
 }
 
 } // end juliainterface
@@ -597,23 +601,23 @@ OscarNumber& OscarNumber::operator/= (const Rational& b) {
 //}
 
 OscarNumber& OscarNumber::operator+= (const OscarNumber& b){
-   juliainterface::maybe_upgrade(impl, b.impl);
-   impl->add(b.impl.get());
+   auto bic = juliainterface::maybe_upgrade(impl, b.impl);
+   impl->add(bic ? bic.get() : b.impl.get());
    return *this;
 }
 OscarNumber& OscarNumber::operator-= (const OscarNumber& b){
-   juliainterface::maybe_upgrade(impl, b.impl);
-   impl->sub(b.impl.get());
+   auto bic = juliainterface::maybe_upgrade(impl, b.impl);
+   impl->sub(bic ? bic.get() : b.impl.get());
    return *this;
 }
 OscarNumber& OscarNumber::operator*= (const OscarNumber& b){
-   juliainterface::maybe_upgrade(impl, b.impl);
-   impl->mul(b.impl.get());
+   auto bic = juliainterface::maybe_upgrade(impl, b.impl);
+   impl->mul(bic ? bic.get() : b.impl.get());
    return *this;
 }
 OscarNumber& OscarNumber::operator/= (const OscarNumber& b){
-   juliainterface::maybe_upgrade(impl, b.impl);
-   impl->div(b.impl.get());
+   auto bic = juliainterface::maybe_upgrade(impl, b.impl);
+   impl->div(bic ? bic.get() : b.impl.get());
    return *this;
 
 }
@@ -628,8 +632,14 @@ OscarNumber pow(const OscarNumber& a, Int k) {
 }
 
 Int OscarNumber::cmp(const OscarNumber& b) const {
-   juliainterface::maybe_upgrade(impl, b.impl);
-   return impl->cmp(b.impl.get());
+   if (this->uses_rational() == b.uses_rational())
+      return impl->cmp(b.impl.get());
+   if (b.uses_rational())
+      return -b.cmp(*this);
+   // need a copy for the upgrade
+   OscarNumber on(*this);
+   (void) juliainterface::maybe_upgrade(on.impl, b.impl);
+   return on.impl->cmp(b.impl.get());
 }
 
 Int OscarNumber::cmp(const Rational& r) const {

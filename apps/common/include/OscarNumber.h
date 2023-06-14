@@ -66,7 +66,7 @@ namespace polymake { namespace common {
 //template <long index>
 class OscarNumber {
    private:
-      mutable std::unique_ptr<juliainterface::oscar_number_wrap, void(*)(juliainterface::oscar_number_wrap*)> impl;
+      std::unique_ptr<juliainterface::oscar_number_wrap, void(*)(juliainterface::oscar_number_wrap*)> impl;
 
       explicit OscarNumber(juliainterface::oscar_number_wrap* x);
 
