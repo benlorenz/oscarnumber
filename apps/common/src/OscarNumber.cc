@@ -503,6 +503,7 @@ public:
 
    std::string to_string() const {
       std::ostringstream str;
+      str << "(";
       if (__builtin_expect(this->is_inf() == 0, 1)) {
          str << numerator(*this);
          if (!Rational::is_integral()) {
@@ -512,6 +513,7 @@ public:
       } else {
          str << (Rational) *this;
       }
+      str << ")";
       return str.str();
    }
 
