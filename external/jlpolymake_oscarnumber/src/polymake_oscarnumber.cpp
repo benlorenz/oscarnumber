@@ -89,7 +89,7 @@ bool feed_oscarnumber_types(FunType&& fc, jl_value_t* value)
    } else if (jl_subtype(current_type, POLYMAKETYPE_SparseVector_OscarNumber)) {
       fc << jlcxx::unbox<const pm::SparseVector<polymake::common::OscarNumber>&>(value);
       return true;
-   } else if (jl_subtype(current_type, POLYMAKETYPE_Array_OscarNumber)) {
+   } else if (jl_subtype(current_type, POLYMAKETYPE_SparseMatrix_OscarNumber)) {
       fc << jlcxx::unbox<const pm::SparseMatrix<polymake::common::OscarNumber>&>(value);
       return true;
    }
