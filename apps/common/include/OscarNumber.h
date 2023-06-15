@@ -118,6 +118,8 @@ class OscarNumber {
 
       friend OscarNumber abs(const OscarNumber& on);
 
+      size_t hash() const;
+
       // infinity
       // sgn: -1 for -inf, 1 for inf and 0 for 0
       static OscarNumber infinity(Int sgn);
@@ -425,6 +427,13 @@ bool isfinite(const polymake::common::OscarNumber& a) noexcept
    return a.is_finite();
 }
 
+template <>
+struct hash_func<polymake::common::OscarNumber, is_scalar> {
+public:
+   size_t operator() (const polymake::common::OscarNumber& on) const {
+      return on.hash();
+   }
+};
 
 }
 

@@ -49,6 +49,7 @@ typedef struct __oscar_number_dispatch_helper {
       void* is_inf;
       void* sign;
       void* abs;
+      void* hash;
 } oscar_number_dispatch_helper;
 
 typedef struct __oscar_number_dispatch {
@@ -72,6 +73,7 @@ typedef struct __oscar_number_dispatch {
       std::function<bool (jl_value_t*)> is_inf;
       std::function<long (jl_value_t*)> sign;
       std::function<jl_value_t* (jl_value_t*)> abs;
+      std::function<size_t (jl_value_t*)> hash;
 } oscar_number_dispatch;
 
 class oscar_number_wrap {
@@ -100,6 +102,7 @@ class oscar_number_wrap {
    virtual Int sign() const = 0;
    virtual oscar_number_wrap* abs_value() const = 0;
    virtual std::string to_string() const = 0;
+   virtual size_t hash() const = 0;
 
    static oscar_number_wrap* create(const Rational&);
    static oscar_number_wrap* create(void* v, long index);
@@ -375,6 +378,11 @@ class oscar_number_impl : public oscar_number_wrap {
             return new oscar_number_impl(dispatch.abs(julia_elem), dispatch, std::true_type());
          return oscar_number_wrap::create(Rational::infinity(1));
       }
+      size_t hash() const {
+         if (is_inf())
+            return 0;
+         return dispatch.hash(julia_elem);
+      }
 
       bool uses_rational() const {
          return false;
@@ -478,7 +486,11 @@ public:
       return pm::sign(*this);
    }
    oscar_number_wrap* abs_value() const {
-      return new oscar_number_rational_impl(abs((Rational)*this));
+      return new oscar_number_rational_impl(abs(static_cast<Rational>(*this)));
+   }
+   size_t hash() const {
+      static auto hashfun = pm::hash_func<Rational>();
+      return hashfun(static_cast<Rational>(*this));
    }
 
    bool uses_rational() const {
@@ -665,6 +677,10 @@ OscarNumber abs(const OscarNumber& on) {
    return OscarNumber(on.impl->abs_value());
 }
 
+size_t OscarNumber::hash() const {
+   return impl->hash();
+}
+
 OscarNumber::operator Rational() const {
    return Rational(impl->as_rational());
 }
@@ -735,6 +751,9 @@ void OscarNumber::register_oscar_number(void* disp, long index) {
    //                reinterpret_cast<bool (*) (jl_value_t*)>(helper->is_inf));
    dispatch.sign    = std::function<long     (jl_value_t*)>(
                    reinterpret_cast<long (*) (jl_value_t*)>(helper->sign));
+
+   dispatch.hash    = std::function<size_t   (jl_value_t*)>(
+                   reinterpret_cast<size_t (*) (jl_value_t*)>(helper->hash));
 
    oscar_number_map.emplace(index, std::move(dispatch));
 }

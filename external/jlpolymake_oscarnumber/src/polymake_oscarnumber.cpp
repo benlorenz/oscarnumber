@@ -128,9 +128,15 @@ void add_oscarnumber(jlcxx::Module& jlmodule)
 
     jlmodule.method("_sign", [](const WrappedT& a) { return a.sign(); });
 
+    jlmodule.method("_hash_mpz", [](jl_value_t* jv) {
+             Integer* num = reinterpret_cast<Integer*>(jv);
+             static auto hashfun = pm::hash_func<Integer>();
+             return hashfun(*num); 
+          });
+
     jlmodule.method("show_small_obj", [](const WrappedT& S) {
                 return show_small_object<WrappedT>(S);
-            });
+          });
 
     jlmodule.method("_uses_rational", [](const WrappedT& S) {
                 return S.uses_rational();
