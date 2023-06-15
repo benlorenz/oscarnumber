@@ -394,10 +394,11 @@ class oscar_number_impl : public oscar_number_wrap {
       std::string to_string() const {
          std::ostringstream str("");
          if (__builtin_expect(this->is_inf() == 0, 1)) {
-            static jl_function_t *strfun = jl_get_function(jl_base_module, "string");
-            jl_value_t* jstr = jl_call1(strfun, julia_elem);
-            JL_GC_PUSH1(&jstr);
-            const char* cstr = jl_string_ptr(jstr);
+            //static jl_function_t *strfun = jl_get_function(jl_base_module, "string");
+            //jl_value_t* jstr = jl_call1(strfun, julia_elem);
+            char* cstr = dispatch.to_string(julia_elem);
+            //JL_GC_PUSH1(&jstr);
+            //const char* cstr = jl_string_ptr(jstr);
             str << "(" << cstr << ")";
             JL_GC_POP();
          } else {
@@ -502,7 +503,15 @@ public:
 
    std::string to_string() const {
       std::ostringstream str;
-      str << (Rational) *this;
+      if (__builtin_expect(this->is_inf() == 0, 1)) {
+         str << numerator(*this);
+         if (!Rational::is_integral()) {
+            str << "//";
+            str << denominator(*this);
+         }
+      } else {
+         str << (Rational) *this;
+      }
       return str.str();
    }
 
@@ -740,7 +749,8 @@ void OscarNumber::register_oscar_number(void* disp, long index) {
 
    dispatch.cmp = std::function<long (jl_value_t*, jl_value_t*)>(reinterpret_cast<long(*)(jl_value_t*, jl_value_t*)>(helper->cmp));
 
-   //dispatch.to_string   = std::function<char* (jl_value_t*)>(reinterpret_cast<char* (*)(jl_value_t*)>(helper->to_string));
+   dispatch.to_string   = std::function<char* (jl_value_t*)>(
+                   reinterpret_cast<char* (*)(jl_value_t*)>(helper->to_string));
    //dispatch.from_string = std::function<jl_value_t* (char*)>(reinterpret_cast<jl_value_t*  (*) (char*)>(helper->from_string));
 
    dispatch.is_zero = std::function<bool     (jl_value_t*)>(
