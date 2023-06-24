@@ -680,6 +680,10 @@ Int OscarNumber::is_inf() const {
    return impl->is_inf();
 }
 
+OscarNumber OscarNumber::infinity(Int sign) {
+   return OscarNumber(Rational::infinity(sign));
+}
+
 Int OscarNumber::sign() const {
    return impl->sign();
 }
