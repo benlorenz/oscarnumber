@@ -2,5 +2,6 @@
  "inst": [
   {"args": ["perl::Canned<const SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "func": "rows", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "kind": "meth", "sig": "rows:M"},
   {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "rows", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "kind": "meth", "sig": "rows:M"},
+  {"args": ["perl::Canned<const pm::MatrixMinor<pm::SparseMatrix<pm::Integer, pm::NonSymmetric>&, pm::incidence_line<pm::AVL::tree<pm::sparse2d::traits<pm::sparse2d::traits_base<pm::nothing, true, false, (pm::sparse2d::restriction_kind)0>, false, (pm::sparse2d::restriction_kind)0> > const&> const&, pm::all_selector const&>&>"], "func": "rows", "include": ["polymake/IncidenceMatrix.h", "polymake/Integer.h", "polymake/Matrix.h", "polymake/SparseMatrix.h"], "kind": "meth", "sig": "rows:M"},
  null ],
 "version": 3}

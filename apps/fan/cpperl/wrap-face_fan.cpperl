@@ -1,0 +1,5 @@
+{"app": "fan", "embed": "face_fan.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "face_fan", "include": ["polymake/common/OscarNumber.h"], "sig": "face_fan:T1.B", "tp": 1},
+ null ],
+"version": 3}

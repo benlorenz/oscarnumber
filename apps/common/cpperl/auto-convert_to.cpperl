@@ -1,0 +1,6 @@
+{"app": "common",
+ "inst": [
+  {"args": ["Vector<double>", "perl::Canned<const Vector<Int>&>"], "func": "convert_to", "include": ["polymake/Vector.h"], "sig": "convert_to:T1.X", "tp": 1},
+  {"args": ["Matrix<Rational>", "perl::Canned<const Matrix<double>&>"], "func": "convert_to", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h"], "sig": "convert_to:T1.X", "tp": 1},
+ null ],
+"version": 3}

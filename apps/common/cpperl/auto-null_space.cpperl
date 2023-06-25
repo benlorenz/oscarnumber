@@ -1,5 +1,6 @@
 {"app": "common",
  "inst": [
   {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "null_space", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "null_space.X"},
+  {"args": ["perl::Canned<const pm::BlockMatrix<mlist<pm::Matrix<common::OscarNumber> const&, pm::Matrix<common::OscarNumber> const&>, std::integral_constant<bool, true> >&>"], "func": "null_space", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "null_space.X"},
  null ],
 "version": 3}

@@ -4,5 +4,6 @@
   {"args": ["polymake::common::OscarNumber", "Int(Int)", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "void"], "func": "cube", "include": ["polymake/common/OscarNumber.h"], "sig": "cube:T1.Int.C0.C0.o", "tp": 1},
   {"args": ["polymake::common::OscarNumber", "Int(Int)", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "polymake::common::OscarNumber(Int)", "void"], "func": "cube", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "cube:T1.Int.C0.C0.o", "tp": 1},
   {"args": ["QuadraticExtension<Rational>", "Int(Int)", "QuadraticExtension<Rational>(perl::Canned<const Rational&>)", "QuadraticExtension<Rational>(Int)", "void"], "func": "cube", "include": ["polymake/QuadraticExtension.h", "polymake/Rational.h"], "sig": "cube:T1.Int.C0.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "Int(Int)", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "void"], "func": "cube", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "cube:T1.Int.C0.C0.o", "tp": 1},
  null ],
 "version": 3}

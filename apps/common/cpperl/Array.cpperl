@@ -1,5 +1,6 @@
 {"app": "common",
  "inst": [
   {"class": "Array<polymake::common::OscarNumber>", "include": ["polymake/Array.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::Array__OscarNumber"},
+  {"args": ["Array<Set<Int>>", "perl::Canned<const Array<Array<Int>>&>"], "include": ["polymake/Array.h", "polymake/Set.h"], "op": "new", "sig": "new.X"},
  null ],
 "version": 3}

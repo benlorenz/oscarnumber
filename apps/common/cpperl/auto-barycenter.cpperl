@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "barycenter", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "barycenter.X"},
+ null ],
+"version": 3}

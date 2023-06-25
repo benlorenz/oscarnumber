@@ -1,0 +1,5 @@
+{"app": "fan", "embed": "k_skeleton.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "void"], "func": "k_skeleton", "include": ["polymake/common/OscarNumber.h"], "sig": "k_skeleton:T1.B.x", "tp": 1},
+ null ],
+"version": 3}

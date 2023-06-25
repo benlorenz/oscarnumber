@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "incidence.cc",
+ "inst": [
+  {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "incidence_matrix", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "incidence_matrix.X.X"},
+ null ],
+"version": 3}
