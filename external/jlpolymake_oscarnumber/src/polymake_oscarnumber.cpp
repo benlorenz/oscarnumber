@@ -135,7 +135,7 @@ void add_oscarnumber(jlcxx::Module& jlmodule)
           });
 
     jlmodule.method("show_small_obj", [](const WrappedT& S) {
-                return show_small_object<WrappedT>(S);
+                return show_small_object<WrappedT>(S, false);
           });
 
     jlmodule.method("_uses_rational", [](const WrappedT& S) {
