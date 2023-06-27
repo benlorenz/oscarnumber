@@ -1,0 +1,6 @@
+{"app": "common",
+ "inst": [
+  {"class": "EdgeMap<Undirected, polymake::common::OscarNumber>", "include": ["polymake/Graph.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::EdgeMap_A_Undirected_I_OscarNumber_Z"},
+  {"args": ["EdgeMap<Undirected, polymake::common::OscarNumber>", "perl::Canned<const Graph<Undirected>&>"], "include": ["polymake/Graph.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+ null ],
+"version": 3}

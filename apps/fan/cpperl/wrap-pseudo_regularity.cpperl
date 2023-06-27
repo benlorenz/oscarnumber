@@ -1,0 +1,5 @@
+{"app": "fan", "embed": "pseudo_regularity.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "pseudo_regular", "include": ["polymake/common/OscarNumber.h"], "sig": "pseudo_regular:T1.B", "tp": 1},
+ null ],
+"version": 3}
