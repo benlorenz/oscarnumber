@@ -20,3 +20,8 @@
 
 my @libs = glob("$buildtop/lib/libpolymake_oscarnumber.*");
 copy_file(@libs, "$InstallArch/lib/", mode=> 0555);
+my @apps = glob("$buildtop/apps/*");
+for my $dir (@apps) {
+   my $app = basename($dir);
+   make_dir("$ExtTop/apps/$app");
+}
