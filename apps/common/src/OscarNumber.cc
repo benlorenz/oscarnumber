@@ -394,13 +394,8 @@ class oscar_number_impl : public oscar_number_wrap {
       std::string to_string() const {
          std::ostringstream str("");
          if (__builtin_expect(this->is_inf() == 0, 1)) {
-            //static jl_function_t *strfun = jl_get_function(jl_base_module, "string");
-            //jl_value_t* jstr = jl_call1(strfun, julia_elem);
             char* cstr = dispatch.to_string(julia_elem);
-            //JL_GC_PUSH1(&jstr);
-            //const char* cstr = jl_string_ptr(jstr);
             str << "(" << cstr << ")";
-            JL_GC_POP();
          } else {
             str << (infinity > 0 ? "inf" : "-inf");
          }
