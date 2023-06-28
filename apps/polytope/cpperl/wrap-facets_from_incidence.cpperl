@@ -1,5 +1,6 @@
 {"app": "polytope", "embed": "facets_from_incidence.cc",
  "inst": [
   {"args": ["polymake::common::OscarNumber", "void"], "func": "vertices_from_incidence", "include": ["polymake/common/OscarNumber.h"], "sig": "vertices_from_incidence:T1.B", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "facets_from_incidence", "include": ["polymake/common/OscarNumber.h"], "sig": "facets_from_incidence:T1.B", "tp": 1},
  null ],
 "version": 3}
