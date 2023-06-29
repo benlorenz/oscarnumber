@@ -50,6 +50,7 @@ typedef struct __oscar_number_dispatch_helper {
       void* sign;
       void* abs;
       void* hash;
+      void* to_rational;
 } oscar_number_dispatch_helper;
 
 typedef struct __oscar_number_dispatch {
@@ -74,6 +75,7 @@ typedef struct __oscar_number_dispatch {
       std::function<long (jl_value_t*)> sign;
       std::function<jl_value_t* (jl_value_t*)> abs;
       std::function<size_t (jl_value_t*)> hash;
+      std::function<mpq_ptr (jl_value_t*)> to_rational;
 } oscar_number_dispatch;
 
 class oscar_number_wrap {
@@ -85,7 +87,8 @@ class oscar_number_wrap {
    virtual oscar_number_wrap* upgrade_other(oscar_number_wrap* other) const = 0;
    virtual oscar_number_wrap* upgrade_to(const oscar_number_dispatch& d) = 0;
    virtual jl_value_t* for_julia() const = 0;
-   virtual const Rational& as_rational() const = 0;
+   virtual Rational as_rational() const = 0;
+   virtual const Rational& get_rational() const = 0;
    virtual bool uses_rational() const = 0;
    virtual long index() const = 0;
 
@@ -122,7 +125,7 @@ class oscar_number_impl : public oscar_number_wrap {
       oscar_number_impl(Int x, long field_index) :
          dispatch(oscar_number_map[field_index]) {
          //cerr << "pre-init from int" << endl;
-         jl_value_t* empty;
+         jl_value_t* empty = nullptr;
          JL_GC_PUSH2(&julia_elem, &empty);
          julia_elem = dispatch.init(dispatch.index, &empty, x);
          dispatch.gc_protect(julia_elem);
@@ -221,9 +224,22 @@ class oscar_number_impl : public oscar_number_wrap {
          return julia_elem;
       }
 
-      const Rational& as_rational() const {
-         // this should not be called
-         throw std::runtime_error("oscar_number_wrap: error accessing rational of proper field element");
+      Rational as_rational() const {
+         if (__builtin_expect(this->is_inf() == 0, 1)) {
+            Rational r;
+            mpq_ptr q = dispatch.to_rational(julia_elem);
+            if (q == nullptr) {
+               throw std::runtime_error("OscarNumber: could not convert field element to rational");
+            }
+            r.copy_from(q);
+            return r;
+         } else {
+            return Rational::infinity(infinity);
+         }
+      }
+      const Rational& get_rational() const {
+         // this should not happen
+         throw std::runtime_error("oscar_number_wrap: invalid access to rational");
       }
 
       //oscar_number_wrap* add(const oscar_number_wrap* b) {
@@ -297,7 +313,7 @@ class oscar_number_impl : public oscar_number_wrap {
                julia_elem = res;
                JL_GC_POP();
             } else {
-               jl_value_t* empty;
+               jl_value_t* empty = nullptr;
                JL_GC_PUSH1(&empty);
                jl_value_t* zero = dispatch.init(dispatch.index, &empty, 0);
                dispatch.gc_protect(zero);
@@ -439,8 +455,12 @@ public:
       //return (jl_value_t*) nullptr;
    }
 
-   const Rational& as_rational() const {
+   const Rational& get_rational() const {
       return (const Rational&) *this;
+   }
+
+   Rational as_rational() const {
+      return Rational(*this);
    }
 
    oscar_number_wrap* negate() {
@@ -448,26 +468,26 @@ public:
       return this;
    }
    oscar_number_wrap* add(const oscar_number_wrap* other) {
-      Rational::operator+=(other->as_rational());
+      Rational::operator+=(other->get_rational());
       return this;
    }
    oscar_number_wrap* sub(const oscar_number_wrap* other) {
-      Rational::operator-=(other->as_rational());
+      Rational::operator-=(other->get_rational());
       return this;
    }
    oscar_number_wrap* mul(const oscar_number_wrap* other) {
-      Rational::operator*=(other->as_rational());
+      Rational::operator*=(other->get_rational());
       return this;
    }
    oscar_number_wrap* div(const oscar_number_wrap* other) {
-      Rational::operator/=(other->as_rational());
+      Rational::operator/=(other->get_rational());
       return this;
    }
    oscar_number_wrap* pow(Int p) const {
       return new oscar_number_rational_impl(Rational::pow(*this, p));
    }
    Int cmp(const oscar_number_wrap* other) const {
-      return this->compare(other->as_rational());
+      return this->compare(other->get_rational());
    }
    bool is_zero() const {
       return Rational::is_zero();
@@ -765,6 +785,9 @@ void OscarNumber::register_oscar_number(void* disp, long index) {
 
    dispatch.hash    = std::function<size_t   (jl_value_t*)>(
                    reinterpret_cast<size_t (*) (jl_value_t*)>(helper->hash));
+
+   dispatch.to_rational  = std::function<mpq_ptr   (jl_value_t*)>(
+                         reinterpret_cast<mpq_ptr (*) (jl_value_t*)>(helper->to_rational));
 
    oscar_number_map.emplace(index, std::move(dispatch));
 }
