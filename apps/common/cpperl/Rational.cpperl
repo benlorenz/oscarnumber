@@ -1,0 +1,5 @@
+{"app": "common",
+ "inst": [
+  {"args": ["Rational", "perl::Canned<const polymake::common::OscarNumber&>"], "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+ null ],
+"version": 3}
