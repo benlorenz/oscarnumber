@@ -24,4 +24,5 @@ my @apps = glob("$buildtop/apps/*");
 for my $dir (@apps) {
    my $app = basename($dir);
    make_dir("$ExtTop/apps/$app");
+   system("touch $ExtTop/apps/$app/.empty");
 }
