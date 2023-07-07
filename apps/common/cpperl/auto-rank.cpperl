@@ -2,5 +2,7 @@
  "inst": [
   {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "rank", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "rank.X"},
   {"args": ["perl::Canned<const pm::BlockMatrix<mlist<pm::Matrix<common::OscarNumber> const&, pm::Matrix<common::OscarNumber> const&>, std::integral_constant<bool, true> >&>"], "func": "rank", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h", "polymake/linalg.h"], "sig": "rank.X"},
+  {"args": ["perl::Canned<const Matrix<Int>&>"], "func": "rank", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/linalg.h"], "sig": "rank.X"},
+  {"args": ["perl::Canned<const Matrix<Integer>&>"], "func": "rank", "include": ["polymake/IncidenceMatrix.h", "polymake/Integer.h", "polymake/Matrix.h", "polymake/linalg.h"], "sig": "rank.X"},
  null ],
 "version": 3}

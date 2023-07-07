@@ -1,0 +1,10 @@
+{"app": "polytope", "embed": "bipyramid.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(Int)", "polymake::common::OscarNumber(Int)", "void"], "func": "bipyramid", "include": ["polymake/common/OscarNumber.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "void"], "func": "bipyramid", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "void"], "func": "bipyramid", "include": ["polymake/common/OscarNumber.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "void"], "func": "bipyramid", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "void"], "func": "bipyramid", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+  {"args": ["Rational", "void", "Rational(perl::Canned<const Rational&>)", "Rational(perl::Canned<const Rational&>)", "void"], "func": "bipyramid", "include": ["polymake/Rational.h"], "sig": "bipyramid:T1.B.C0.C0.o", "tp": 1},
+ null ],
+"version": 3}

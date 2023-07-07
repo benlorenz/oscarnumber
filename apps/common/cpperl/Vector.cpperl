@@ -19,5 +19,7 @@
   {"args": ["Vector<Rational>", "perl::Canned<const Vector<Int>&>"], "include": ["polymake/Rational.h", "polymake/Vector.h"], "op": "convert", "ret": "empty", "sig": "convert:O"},
   {"args": ["perl::Canned<const Wary<pm::IndexedSlice<pm::masquerade<pm::ConcatRows, pm::Matrix_base<common::OscarNumber>&>, pm::Series<long, true> const, mlist<> >>&>", "perl::Canned<const pm::IndexedSlice<pm::masquerade<pm::ConcatRows, pm::Matrix_base<common::OscarNumber>&>, pm::Series<long, true> const, mlist<> >&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "sub", "sig": "sub:O.X4.X16"},
   {"args": ["perl::Canned<const Wary<Vector<polymake::common::OscarNumber>>&>", "perl::Canned<const Vector<polymake::common::OscarNumber>&>"], "include": ["polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "mul", "sig": "mul:O.X4.X16"},
+  {"args": ["Vector<polymake::common::OscarNumber>", "perl::Canned<const Vector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "convert", "ret": "empty", "sig": "convert:O"},
+  {"args": ["Vector<polymake::common::OscarNumber>", "perl::Canned<const Vector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
  null ],
 "version": 3}

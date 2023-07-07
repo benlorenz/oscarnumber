@@ -1,0 +1,8 @@
+{"app": "polytope", "embed": "pyramid.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(Int)", "void"], "func": "pyramid", "include": ["polymake/common/OscarNumber.h"], "sig": "pyramid:T1.B.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "void"], "func": "pyramid", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "pyramid:T1.B.C0.o", "tp": 1},
+  {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const polymake::common::OscarNumber&>)", "void"], "func": "pyramid", "include": ["polymake/common/OscarNumber.h"], "sig": "pyramid:T1.B.C0.o", "tp": 1},
+  {"args": ["Rational", "void", "Rational(perl::Canned<const Rational&>)", "void"], "func": "pyramid", "include": ["polymake/Rational.h"], "sig": "pyramid:T1.B.C0.o", "tp": 1},
+ null ],
+"version": 3}

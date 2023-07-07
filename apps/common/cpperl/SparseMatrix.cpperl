@@ -3,5 +3,6 @@
   {"class": "SparseMatrix<polymake::common::OscarNumber, NonSymmetric>", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "pkg": "Polymake::common::SparseMatrix_A_OscarNumber_I_NonSymmetric_Z"},
   {"args": ["SparseMatrix<polymake::common::OscarNumber, NonSymmetric>", "perl::Canned<const SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
   {"args": ["SparseMatrix<Rational, NonSymmetric>", "perl::Canned<const pm::MatrixMinor<pm::SparseMatrix<pm::Rational, pm::NonSymmetric> const&, pm::incidence_line<pm::AVL::tree<pm::sparse2d::traits<pm::sparse2d::traits_base<pm::nothing, true, false, (pm::sparse2d::restriction_kind)0>, false, (pm::sparse2d::restriction_kind)0> > const&> const&, pm::all_selector const&>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h", "polymake/SparseMatrix.h"], "op": "new", "sig": "new.X"},
+  {"args": ["SparseMatrix<polymake::common::OscarNumber, NonSymmetric>", "perl::Canned<const SparseMatrix<Rational, NonSymmetric>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Rational.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
  null ],
 "version": 3}

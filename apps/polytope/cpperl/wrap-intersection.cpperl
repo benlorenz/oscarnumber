@@ -2,5 +2,6 @@
  "inst": [
   {"args": ["polymake::common::OscarNumber", "void"], "func": "intersection", "include": ["polymake/common/OscarNumber.h"], "sig": "intersection:T1.B", "tp": 1},
   {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const pm::ListMatrix<pm::Vector<common::OscarNumber> >&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+  {"args": ["pm::ListMatrix<pm::Vector<common::OscarNumber> >", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "convert", "ret": "empty", "sig": "convert:O"},
  null ],
 "version": 3}
