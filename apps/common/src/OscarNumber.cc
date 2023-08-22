@@ -194,14 +194,18 @@ class oscar_number_impl : public oscar_number_wrap {
       ~oscar_number_impl() {
          JL_GC_PUSH1(&julia_elem);
          //cerr << "free in ~: " << julia_elem << endl;
-         dispatch.gc_free(julia_elem);
+         // during global destruction the std::function might already be cleaned up
+         // the objects will be deleted anyway once the gc dict is gone
+         if (dispatch.gc_free)
+            dispatch.gc_free(julia_elem);
          JL_GC_POP();
       }
 
       void destruct() {
          JL_GC_PUSH1(&julia_elem);
          //cerr << "free in destruct: " << julia_elem << endl;
-         dispatch.gc_free(julia_elem);
+         if (dispatch.gc_free)
+            dispatch.gc_free(julia_elem);
          JL_GC_POP();
       }
 
