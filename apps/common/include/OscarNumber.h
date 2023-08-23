@@ -377,6 +377,8 @@ inline bool abs_equal(const polymake::common::OscarNumber& on1,const polymake::c
    return abs(on1).cmp(on2) == 0;
 }
 
+void oscarnumber_prepare_cleanup();
+
 } }
 
 

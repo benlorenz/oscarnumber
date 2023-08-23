@@ -191,6 +191,8 @@ JLCXX_MODULE define_module_polymake_oscarnumber(jlcxx::Module& jlmodule)
 
     jlmodule.method("get_type_names_oscarnumber", &get_type_names_oscarnumber);
 
+    jlmodule.method("oscarnumber_prepare_cleanup", []() { polymake::common::oscarnumber_prepare_cleanup(); });
+
     insert_type_in_map("OscarNumber", &POLYMAKETYPE_OscarNumber);
     insert_type_in_map("Array_OscarNumber", &POLYMAKETYPE_Array_OscarNumber);
     insert_type_in_map("Vector_OscarNumber", &POLYMAKETYPE_Vector_OscarNumber);

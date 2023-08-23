@@ -115,6 +115,8 @@ class oscar_number_wrap {
 
 static std::unordered_map<Int, oscar_number_dispatch> oscar_number_map;
 
+static bool in_cleanup = false;
+
 class oscar_number_impl : public oscar_number_wrap {
    public:
       // no default construction, this should only contain proper field elements
@@ -194,9 +196,9 @@ class oscar_number_impl : public oscar_number_wrap {
       ~oscar_number_impl() {
          JL_GC_PUSH1(&julia_elem);
          //cerr << "free in ~: " << julia_elem << endl;
-         // during global destruction the std::function might already be cleaned up
+         // during global destruction the dispatcher might already be cleaned up
          // the objects will be deleted anyway once the gc dict is gone
-         if (dispatch.gc_free)
+         if (!in_cleanup)
             dispatch.gc_free(julia_elem);
          JL_GC_POP();
       }
@@ -204,7 +206,7 @@ class oscar_number_impl : public oscar_number_wrap {
       void destruct() {
          JL_GC_PUSH1(&julia_elem);
          //cerr << "free in destruct: " << julia_elem << endl;
-         if (dispatch.gc_free)
+         if (!in_cleanup)
             dispatch.gc_free(julia_elem);
          JL_GC_POP();
       }
@@ -734,6 +736,10 @@ void* OscarNumber::unsafe_get() const {
 
 std::string OscarNumber::to_string() const {
    return impl->to_string();
+}
+
+void oscarnumber_prepare_cleanup() {
+   juliainterface::in_cleanup = true;
 }
 
 void OscarNumber::register_oscar_number(void* disp, long index) {
