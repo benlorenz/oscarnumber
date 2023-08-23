@@ -21,5 +21,7 @@
   {"args": ["perl::Canned<const Wary<Vector<polymake::common::OscarNumber>>&>", "perl::Canned<const Vector<polymake::common::OscarNumber>&>"], "include": ["polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "mul", "sig": "mul:O.X4.X16"},
   {"args": ["Vector<polymake::common::OscarNumber>", "perl::Canned<const Vector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "convert", "ret": "empty", "sig": "convert:O"},
   {"args": ["Vector<polymake::common::OscarNumber>", "perl::Canned<const Vector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/Vector.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+  {"args": ["Vector<TropicalNumber<Min, Rational>>", "perl::Canned<const Vector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/TropicalNumber.h", "polymake/Vector.h"], "op": "new", "sig": "new.X"},
+  {"args": ["Vector<Rational>", "perl::Canned<const SparseVector<Rational>&>"], "include": ["polymake/Rational.h", "polymake/SparseVector.h", "polymake/Vector.h"], "op": "new", "sig": "new.X"},
  null ],
 "version": 3}
