@@ -51,6 +51,7 @@ typedef struct __oscar_number_dispatch_helper {
       void* abs;
       void* hash;
       void* to_rational;
+      void* to_float;
 } oscar_number_dispatch_helper;
 
 typedef struct __oscar_number_dispatch {
@@ -76,6 +77,7 @@ typedef struct __oscar_number_dispatch {
       std::function<jl_value_t* (jl_value_t*)> abs;
       std::function<size_t (jl_value_t*)> hash;
       std::function<mpq_ptr (jl_value_t*)> to_rational;
+      std::function<double (jl_value_t*)> to_float;
 } oscar_number_dispatch;
 
 class oscar_number_wrap {
@@ -88,6 +90,7 @@ class oscar_number_wrap {
    virtual oscar_number_wrap* upgrade_to(const oscar_number_dispatch& d) = 0;
    virtual jl_value_t* for_julia() const = 0;
    virtual Rational as_rational() const = 0;
+   virtual double as_float() const = 0;
    virtual const Rational& get_rational() const = 0;
    virtual bool uses_rational() const = 0;
    virtual long index() const = 0;
@@ -228,6 +231,15 @@ class oscar_number_impl : public oscar_number_wrap {
 
       jl_value_t* for_julia() const {
          return julia_elem;
+      }
+
+      double as_float() const {
+         Int inf = this->is_inf();
+         if (__builtin_expect(inf == 0, 1)) {
+            return dispatch.to_float(julia_elem);
+         } else {
+            return std::numeric_limits<double>::infinity() * static_cast<double>(inf);
+         }
       }
 
       Rational as_rational() const {
@@ -467,6 +479,10 @@ public:
 
    Rational as_rational() const {
       return Rational(*this);
+   }
+
+   double as_float() const {
+      return static_cast<double>(*this);
    }
 
    oscar_number_wrap* negate() {
@@ -722,8 +738,7 @@ OscarNumber::operator Rational() const {
 }
 
 OscarNumber::operator double() const {
-   // TODO dont go via rational
-   return double(impl->as_rational());
+   return impl->as_float();
 }
 
 bool OscarNumber::uses_rational() const {
@@ -798,6 +813,9 @@ void OscarNumber::register_oscar_number(void* disp, long index) {
 
    dispatch.to_rational  = std::function<mpq_ptr   (jl_value_t*)>(
                          reinterpret_cast<mpq_ptr (*) (jl_value_t*)>(helper->to_rational));
+
+   dispatch.to_float     = std::function<double    (jl_value_t*)>(
+                         reinterpret_cast<double  (*) (jl_value_t*)>(helper->to_float));
 
    oscar_number_map.emplace(index, std::move(dispatch));
 }
