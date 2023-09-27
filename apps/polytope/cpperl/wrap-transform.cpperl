@@ -4,5 +4,6 @@
   {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(Int)", "void"], "func": "scale", "include": ["polymake/common/OscarNumber.h"], "sig": "scale:T1.B.C0.x", "tp": 1},
   {"args": ["polymake::common::OscarNumber", "void", "perl::Canned<const Vector<polymake::common::OscarNumber>&>", "void"], "func": "translate", "include": ["polymake/Vector.h", "polymake/common/OscarNumber.h"], "sig": "translate:T1.B.X.x", "tp": 1},
   {"args": ["polymake::common::OscarNumber", "void", "polymake::common::OscarNumber(perl::Canned<const Rational&>)", "void"], "func": "scale", "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "scale:T1.B.C0.x", "tp": 1},
+  {"args": ["double", "void", "perl::Canned<const Vector<double>&>", "void"], "func": "translate", "include": ["polymake/Vector.h"], "sig": "translate:T1.B.X.x", "tp": 1},
  null ],
 "version": 3}

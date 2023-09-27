@@ -4,5 +4,6 @@
   {"args": ["Matrix<Rational>", "perl::Canned<const Matrix<double>&>"], "func": "convert_to", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h"], "sig": "convert_to:T1.X", "tp": 1},
   {"args": ["Rational", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "convert_to", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h", "polymake/common/OscarNumber.h"], "sig": "convert_to:T1.X", "tp": 1},
   {"args": ["Matrix<Int>", "perl::Canned<const Matrix<Rational>&>"], "func": "convert_to", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h"], "sig": "convert_to:T1.X", "tp": 1},
+  {"args": ["double", "perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "convert_to", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "convert_to:T1.X", "tp": 1},
  null ],
 "version": 3}

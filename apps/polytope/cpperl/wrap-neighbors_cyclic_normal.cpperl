@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "neighbors_cyclic_normal.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "neighbors_cyclic_normal_primal", "include": ["polymake/common/OscarNumber.h"], "sig": "neighbors_cyclic_normal_primal:T1.B", "tp": 1},
+ null ],
+"version": 3}
