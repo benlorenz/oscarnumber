@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "compress_incidence.cc",
+ "inst": [
+  {"args": ["polymake::common::OscarNumber", "void"], "func": "compress_incidence_primal", "include": ["polymake/common/OscarNumber.h"], "sig": "compress_incidence_primal:T1.B", "tp": 1},
+ null ],
+"version": 3}

@@ -1,0 +1,5 @@
+{"app": "polytope", "embed": "rand_metric.cc",
+ "inst": [
+  {"args": ["void", "void", "void"], "func": "rand_metric_int", "sig": "rand_metric_int.x.x.o"},
+ null ],
+"version": 3}

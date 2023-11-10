@@ -6,5 +6,6 @@
   {"args": ["polymake::common::OscarNumber", "Int"], "include": ["polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
   {"args": ["perl::Canned<const polymake::common::OscarNumber&>", "Int"], "include": ["polymake/common/OscarNumber.h"], "op": "_gt", "sig": "_gt:O.X.X"},
   {"args": ["polymake::common::OscarNumber", "perl::Canned<const Rational&>"], "include": ["polymake/Rational.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+  {"args": ["perl::Canned<const polymake::common::OscarNumber&>", "Int"], "include": ["polymake/common/OscarNumber.h"], "op": "_ne", "sig": "_ne:O.X.X"},
  null ],
 "version": 3}

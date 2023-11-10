@@ -23,5 +23,7 @@
   {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "op": "assign", "ret": "empty", "sig": "assign:O"},
   {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const Matrix<Rational>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h", "polymake/common/OscarNumber.h"], "op": "assign", "ret": "empty", "sig": "assign:O"},
   {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const SparseMatrix<Rational, NonSymmetric>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/Rational.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "op": "assign", "ret": "empty", "sig": "assign:O"},
+  {"args": ["Matrix<polymake::common::OscarNumber>", "perl::Canned<const Matrix<Integer>&>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Integer.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new.X"},
+  {"args": ["Matrix<polymake::common::OscarNumber>"], "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "op": "new", "sig": "new"},
  null ],
 "version": 3}

@@ -1,5 +1,6 @@
 {"app": "polytope", "embed": "hypertruncated_cube.cc",
  "inst": [
   {"args": ["Rational", "Int(Int)", "Rational(Int)", "Rational(Int)"], "func": "hypertruncated_cube", "include": ["polymake/Rational.h"], "sig": "hypertruncated_cube:T1.Int.C0.C0", "tp": 1},
+  {"args": ["Rational", "Int(Int)", "Rational(perl::Canned<const Rational&>)", "Rational(perl::Canned<const Rational&>)"], "func": "hypertruncated_cube", "include": ["polymake/Rational.h"], "sig": "hypertruncated_cube:T1.Int.C0.C0", "tp": 1},
  null ],
 "version": 3}

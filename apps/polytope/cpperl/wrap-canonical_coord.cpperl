@@ -6,5 +6,6 @@
   {"args": ["perl::Canned<SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "func": "canonicalize_rays", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "sig": "canonicalize_rays.X1"},
   {"args": ["perl::Canned<Vector<polymake::common::OscarNumber>&>"], "func": "canonicalize_rays", "include": ["polymake/Vector.h", "polymake/common/OscarNumber.h"], "sig": "canonicalize_rays.X1"},
   {"args": ["perl::Canned<const Matrix<polymake::common::OscarNumber>&>"], "func": "dehomogenize", "include": ["polymake/IncidenceMatrix.h", "polymake/Matrix.h", "polymake/common/OscarNumber.h"], "sig": "dehomogenize.X"},
+  {"args": ["perl::Canned<SparseMatrix<polymake::common::OscarNumber, NonSymmetric>&>"], "func": "orthogonalize_subspace", "include": ["polymake/IncidenceMatrix.h", "polymake/SparseMatrix.h", "polymake/common/OscarNumber.h"], "sig": "orthogonalize_subspace.X1"},
  null ],
 "version": 3}
